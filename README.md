@@ -33,7 +33,9 @@ sudo sysctl -w kernel.unprivileged_bpf_disabled=0
 
 ### Enable memfd
 ```
+# waydroid_base.prop
 echo "sys.use_memfd=true" | sudo tee -a /var/lib/waydroid/waydroid_base.prop
+# init.rc
 ```
 
 ### Enable memfd in waydroid images
@@ -84,4 +86,4 @@ Good luck. :)
 
 
 last updated at 2022-06-27
-
+thanks to Wachid Adi Nugroho from Waydroid matrix group
