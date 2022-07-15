@@ -82,8 +82,12 @@ waydroid show-full-ui
 ```
 
 
-Good luck. :)
+Good luck :)
 
 
-last updated at 2022-06-27
 thanks to Wachid Adi Nugroho from Waydroid matrix group
+
+GitHub: https://github.com/waydroid/waydroid
+Matrix: `#waydroid:connolly.tech`
+Website: http://waydro.id/
+Docs: http://docs.waydro.id/
