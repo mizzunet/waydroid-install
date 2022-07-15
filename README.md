@@ -1,11 +1,16 @@
 ## How to install Android 11 on Waydroid
 
-### 1. Make pre-installed waydroid images folder
+### Clean Waydroid
+```
+ sudo rm -rf /var/lib/waydroid/ ~/.local/share/{waydroid,applications/*aydroid*}
+```
+
+### Make pre-installed waydroid images folder
 ```
 sudo mkdir -p /usr/share/waydroid-extra/images
 ```
 
-### 2. Download Android 11 images (choose one) on to Downloads folder
+### Download Android 11 images (choose one) on to Downloads folder
 ```
 cd ~/Downloads
 ```
@@ -21,17 +26,24 @@ cd ~/Downloads
   sudo unzip -d /usr/share/waydroid-extra/images '*waydroid*.zip'
 ```
 
-### 3. Initialize use pre-installed waydroid images
+### Initialize use pre-installed waydroid images
 ```
 sudo waydroid init -f -i /usr/share/waydroid-extra/images
 ```
 
-### 4. Enable kernel unprivileged bpf
+### Enable kernel unprivileged bpf
 ```
 sudo sysctl -w kernel.unprivileged_bpf_disabled=0
 ```
 
-### 5. Enable memfd
+### Checking your kernel, is it has ashmem or memfd (usually kernel >= 5.18 no longger has ashmem)
+```
+  $ zgrep -E 'ASHMEM|MEMFD' /proc/config.gz
+```
+Skip "Enable memfd" step below if your kernel still have ashmem
+
+
+### Enable memfd
 ```
 # waydroid_base.prop
 echo "sys.use_memfd=true" | sudo tee -a /var/lib/waydroid/waydroid_base.prop
@@ -44,37 +56,40 @@ sudo umount /tmp/rootfs && rmdir /tmp/rootfs
 ```
 
 
-### 6. Change ApiLevel = 30
+### Modify gbinder config
 - Debian or Ubuntu
 ```
   sudo sed -i '/ApiLevel/s/29/30/' /etc/gbinder.d/anbox.conf
+  sudo sed -i 's/aidl2/aidl3/' /etc/gbinder.d/waydroid.conf
 ```
 
 - Arch Linux
 ```
   sudo sed -i '/ApiLevel/s/29/30/' /etc/gbinder.conf
+  sudo sed -i 's/aidl2/aidl3/' /etc/gbinder.d/waydroid.conf
 ```
 
 - Fedora
 ```
   sudo sed -i '/ApiLevel/s/29/30/' /etc/gbinder.d/waydroid.conf
+  sudo sed -i 's/aidl2/aidl3/' /etc/gbinder.d/waydroid.conf
 ```
 
-### 7. Run waydroid container
+### Run waydroid container
 ```
 sudo systemctl stop waydroid-container.service
 sudo killall waydroid
 sudo systemctl start waydroid-container.service || sudo waydroid start container
 ```
 
-### 8. Run waydroid session, Open new tab (Ctrl+Alt+T)
+### Run waydroid session, Open new tab (Ctrl+Alt+T)
 ```
 waydroid session start
 ```
 
 Please wait until you see message "Android with user 0 is ready"
 
-### 9. Run waydroid ui after it ready, Open new tab again
+### Run waydroid ui after it ready, Open new tab again
 ```
 waydroid show-full-ui
 ```
