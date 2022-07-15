@@ -38,7 +38,7 @@ sudo sysctl -w kernel.unprivileged_bpf_disabled=0
 
 ### Checking your kernel, is it has ashmem or memfd (usually kernel >= 5.18 no longger has ashmem)
 ```
-  $ zgrep -E 'ASHMEM|MEMFD' /proc/config.gz
+ zgrep -E 'ASHMEM|MEMFD' /proc/config.gz
 ```
 Skip "Enable memfd" step below if your kernel still have ashmem
 
@@ -66,7 +66,7 @@ sudo umount /tmp/rootfs && rmdir /tmp/rootfs
 - Arch Linux
 ```
   sudo sed -i '/ApiLevel/s/29/30/' /etc/gbinder.conf
-  sudo sed -i 's/aidl2/aidl3/' /etc/gbinder.d/waydroid.conf
+  sudo sed -i 's/aidl2/aidl3/' /etc/gbinder.d/anbox.conf
 ```
 
 - Fedora
