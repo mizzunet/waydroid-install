@@ -85,9 +85,12 @@ waydroid show-full-ui
 Good luck :)
 
 
-thanks to Wachid Adi Nugroho from Waydroid matrix group
+thanks to Wachid Adi Nugroho from Waydroid matrix group for this documentaion.
 
 GitHub: https://github.com/waydroid/waydroid
+
 Matrix: `#waydroid:connolly.tech`
+
 Website: http://waydro.id/
+
 Docs: http://docs.waydro.id/
