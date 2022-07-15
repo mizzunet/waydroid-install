@@ -36,15 +36,12 @@ sudo sysctl -w kernel.unprivileged_bpf_disabled=0
 # waydroid_base.prop
 echo "sys.use_memfd=true" | sudo tee -a /var/lib/waydroid/waydroid_base.prop
 # init.rc
-```
-
-### Enable memfd in waydroid images
-```
 mkdir /tmp/rootfs
 sudo mount -o rw /usr/share/waydroid-extra/images/system.img /tmp/rootfs
 sudo sed -i '/setprop sys.use_memfd/s/false/true/' /tmp/rootfs/system/etc/init/hw/init.rc
 sudo umount /tmp/rootfs && rmdir /tmp/rootfs 
 ```
+
 
 ### Change ApiLevel = 30
 - Debian or Ubuntu
