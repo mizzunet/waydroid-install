@@ -87,6 +87,8 @@ Good luck :)
 
 thanks to Wachid Adi Nugroho from Waydroid matrix group for this documentaion.
 
+### Support
+
 GitHub: https://github.com/waydroid/waydroid
 
 Matrix: `#waydroid:connolly.tech`
